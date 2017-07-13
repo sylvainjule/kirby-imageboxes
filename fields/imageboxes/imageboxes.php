@@ -67,86 +67,128 @@ class ImageboxesField extends InputField {
 
         $input = $this->input($value);
         
-        // Get label and filename of the input
+        // Get the input's label
         $text = $options['label'];
-        $image = $options['image'];
+        
+        // Get display options
         $display = $this->display();
         
         
-        /* Get image URL
+        /* Defaults
         ----------------------------*/
         
-        // If a query is made about images, set parent directory as page URI or 'page' option 
-        if ($this->query() && $this->query()['fetch'] == 'images') {
+        $ratio = false;
+        $mobile = false;
+        $position = 'center center';
+        
+        
+        /* Display options
+        ----------------------------*/
+        
+        if ($display) {
+
+            /* Mobile
+            ----------------------------*/
             
-            $query = $this->query();
-            
-            // If there is a 'page' options -> Get the page URI
-            if (array_key_exists('page', $query)) {
-                $uri = $this->getPage($query['page'])->uri();
-            } 
-            // If there is no 'page' option -> Get the current page URI
-            else {
-                $uri = $this->page()->uri();
+            // Get mobile option if specified
+            if (array_key_exists('mobile', $display)) {
+                $mobile = $display['mobile'];
             }
             
-            $imageurl = kirby()->urls->index() . '/' . $uri . '/' . $image;
-        }
-        // Otherwise, image is to be found in the main assets/images folder
-        else {
-            $imageurl = kirby()->urls()->assets() .'/images/'. $image;
-        }
-        
-        
-        /* Mobile option
-        ----------------------------*/
-        
-        // default : false
-        $mobile = false;
-        
-        // Get mobile option if specified
-        if ($display && array_key_exists('mobile', $display)) {
-            $mobile = $display['mobile'];
+            /* Ratio
+            ----------------------------*/
+            
+            if (array_key_exists('ratio', $display)) {
+
+                // Get and convert ratio (3/2 -> 66.666%)
+                $ratio = $display['ratio'];
+                $convertedRatio = 1;
+
+                // Do the math
+                if (preg_match('/(\d+)(?:\s*)([\/])(?:\s*)(\d+)/', $ratio, $matches) !== false){
+                    $convertedRatio = $matches[3] / $matches[1];
+                }
+
+                $convertedRatio = $convertedRatio * 100;
+                $convertedRatio = round($convertedRatio, 3, PHP_ROUND_HALF_DOWN);
+                
+                $ratio = $convertedRatio;
+            }
+            
+            
+            /* Position
+            ----------------------------*/
+            
+            if (array_key_exists('position', $display)) {
+                $position = $display['position']; 
+            }
+            
         }
         
         $mobileClass = $mobile ? '' : ' mobile-disabled';
-        
-        
-        /* If there is no ratio
+            
+            
+        /* Color
         ----------------------------*/
         
-        // Go with an img tag if there's no ratio specified
-        if (!$display || !array_key_exists('ratio', $display)) {
-            $imageDiv = '<img src="'. $imageurl .'">';
-            $imageDiv = '<div class="checkbox-illustration'. $mobileClass .'">'. $imageDiv .'</div>';
+        // If the 'color' option is specified
+        if (array_key_exists('color', $options)) {
+            
+            $color = $options['color'];
+            $ratio = ($ratio) ? $ratio : 25;
+            
+            $imageDiv = '<div class="checkbox-illustration as-background'. $mobileClass .'" style=" padding-top: '. $ratio .'%; background-color: '. $color .';"></div>';
         }
+         
         
-        
-        /* If there is a ratio
+        /* Image
         ----------------------------*/
         
-        if ($display && array_key_exists('ratio', $display)) {
+        // If the 'image' option is specified
+        elseif (array_key_exists('image', $options)) {
             
-            // Get and convert ratio (3/2 -> 66.6%)
-            $ratio = $display['ratio'];
-            $convertedRatio = 1;
+            $image = $options['image'];
             
-            if (preg_match('/(\d+)(?:\s*)([\/])(?:\s*)(\d+)/', $ratio, $matches) !== false){
-                $convertedRatio = $matches[3] / $matches[1];
+            /* Get image URL
+            ----------------------------*/
+
+            // If a query is made about images, set parent directory as page URI or 'page' option 
+            if ($this->query() && $this->query()['fetch'] == 'images') {
+
+                $query = $this->query();
+
+                // If there is a 'page' options -> Get the page URI
+                if (array_key_exists('page', $query)) {
+                    $uri = $this->getPage($query['page'])->uri();
+                } 
+                // If there is no 'page' option -> Get the current page URI
+                else {
+                    $uri = $this->page()->uri();
+                }
+
+                $imageurl = kirby()->urls->index() . '/' . $uri . '/' . $image;
+            }
+            // Otherwise, image is to be found in the main assets/images folder
+            else {
+                $imageurl = kirby()->urls()->assets() .'/images/'. $image;
             }
             
-            $convertedRatio = $convertedRatio * 100;
-            $convertedRatio = round($convertedRatio, 3, PHP_ROUND_HALF_DOWN);
-            $ratio = $convertedRatio;
+            /* Build the DIV
+            ----------------------------*/
             
-            // Get position if specified | default : centered
-            $position = array_key_exists('position', $display) ? $display['position'] : 'center center';
-            
-            $imageDiv = '<div class="checkbox-illustration as-background'. $mobileClass .'" style="background-image: url('. $imageurl .'); background-position: '. $position .'; padding-top: '. $ratio .'%;"></div>';
-            
+            // If no ratio
+            if (!$ratio) {
+                $imageDiv = '<img src="'. $imageurl .'">';
+                $imageDiv = '<div class="checkbox-illustration'. $mobileClass .'">'. $imageDiv .'</div>';
+            }
+            // If ratio is specified
+            else {
+                $imageDiv = '<div class="checkbox-illustration as-background'. $mobileClass .'" style="background-image: url('. $imageurl .'); background-position: '. $position .'; padding-top: '. $ratio .'%;"></div>';
+            }
+               
         }
-        
-        
+
+
         /* Build the input
         ----------------------------*/
         
@@ -165,6 +207,7 @@ class ImageboxesField extends InputField {
         return $label;
 
     }
+    
     
     public function getPage($uri) {
         
