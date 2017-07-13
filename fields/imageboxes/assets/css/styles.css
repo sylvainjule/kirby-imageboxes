@@ -1,0 +1,20 @@
+.checkbox-illustration {
+    width: calc(100% + 1em);
+    margin: -.5em 0 .5em -.5em;
+    border-bottom: 1px solid #f7f7f7;
+}
+
+.checkbox-illustration.as-background {
+    background-size: cover;
+}
+
+@media (max-width: 960px) {
+    .checkbox-illustration.mobile-disabled {
+        display: none;
+    }
+}
+
+.checkbox-illustration img {
+    display: block;
+    width: 100%;
+}
