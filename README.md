@@ -1,4 +1,4 @@
-# Imageboxes - Illustrated Checkboxes
+# Imageboxes - Kirby illustrated checkboxes
 
 This field allows you to add illustrations to checkboxes. Suggestions welcome.
 
