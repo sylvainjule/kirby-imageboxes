@@ -2,7 +2,7 @@
 
 This field allows you to add illustrations to checkboxes. Suggestions welcome.
 
-![illustrated-checkboxes](https://user-images.githubusercontent.com/14079751/28165472-2ed0c9e4-67d4-11e7-9cde-535561ad4725.jpg)
+![illustrated-checkboxes](https://user-images.githubusercontent.com/14079751/28174761-b75dc5fa-67f2-11e7-9395-c24a43205d70.jpg)
 
 ## Installation
 Put this field in the `site/fields` directory.  
@@ -18,24 +18,25 @@ The field folder must be named `imageboxes` :
 ## Usage
 
 Basic usage in blueprint:
+
 ```yaml
   fieldname:
     label: Field label
     type: imageboxes
     columns: 4
     options: 
-      first:
-        label: Char. 01
-        image: first.jpg
-      second:
-        label: Char. 02
-        image: second.jpg
-      third:
-        label: Char. 03
-        image: third.jpg
-      fourth:
-        label: Char. 04
-        image: fourth.jpg
+      hyperactive:
+        label: Hyperactive
+        image: hyperactive.jpg
+      sleepy:
+        label: Sleepy
+        image: sleepy.jpg
+      facetious:
+        label: Facetious
+        image: facetious.jpg
+      adventurous:
+        label: Adventurous
+        image: adventurous.jpg
 ```
 
 By default, images must be put in the main `assets/images` folder of your website.
@@ -47,6 +48,7 @@ Other options are not required.
 ### Custom ratio
 
 If `ratio` is specified, images will be displayed as background images and the ratio set for its container. You can then set the background position with a CSS syntax (not mandatory, default position is : `center center`).
+
 ```yaml
   fieldname:
     label: Field label
@@ -88,6 +90,32 @@ The appropriate syntax is then :
       text: 
         label: '{{filename}}'
         image: '{{filename}}'
+```
+
+### Use color instead of image
+
+You can choose to use a background-color instead of an image. In this case, `ratio` should be specified (fallback is 4/1).
+
+```yaml
+fieldname:
+    label: Field label
+    type: imageboxes
+    columns: 4
+    display:
+      ratio: 1/1
+    options:
+      yellow:
+        label: Yellow
+        color: '#e6a726'
+      green:
+        label: Green
+        color: '#558f59'
+      lightblue:
+        label: Light blue
+        color: '#bfcad5'
+      darkblue:
+        label: Dark blue
+        color: '#2f4663'
 ```
 
 ## License
