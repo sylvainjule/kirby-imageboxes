@@ -64,7 +64,8 @@ class ImageboxesField extends InputField {
 
 
     public function item($value, $options) {
-
+    	
+    	$kirby = kirby();
         $input = $this->input($value);
         
         // Get the input's label
