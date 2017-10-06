@@ -64,8 +64,7 @@ class ImageboxesField extends InputField {
 
 
     public function item($value, $options) {
-    	
-    	$kirby = kirby();
+
         $input = $this->input($value);
         
         // Get the input's label
@@ -171,7 +170,7 @@ class ImageboxesField extends InputField {
             }
             // Otherwise, image is to be found in the main assets/images folder
             else {
-            	$image = new Media ($kirby->roots()->assets() .'/images/'. $image, $kirby->urls()->assets() .'/images/'. $image);
+            	$image = new Asset('assets/images/' . $image);
                 $imageurl = $image->resize(400)->url();
             }
             
