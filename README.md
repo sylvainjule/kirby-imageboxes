@@ -41,15 +41,15 @@ myimageboxes:
   type: imageboxes
   columns: 3
   options:
-    light:
-      text: Light theme
-      image: light.jpg
-    dark:
-      text: Dark theme
-      image: dark.jpg
-    blue:
-      text: Blue theme
-      image: blue.jpg
+    bears:
+      text: Brown bears
+      image: bears.jpg
+    bisons:
+      text: Bisons
+      image: bisons.jpg
+    marmots:
+      text: Marmots
+      image: marmots.jpg
 ```
 
 #### 2.2. Dynamic options
