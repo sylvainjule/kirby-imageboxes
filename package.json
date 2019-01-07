@@ -34,5 +34,10 @@
     "vue": "^2.5.17",
     "vueify": "^9.4.1",
     "watchify": "^3.11.0"
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 11"
+  ]
 }

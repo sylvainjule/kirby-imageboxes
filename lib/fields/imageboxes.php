@@ -4,7 +4,7 @@ require_once dirname(__DIR__) . '/options/imageboxes-optionsquery.php';
 require_once dirname(__DIR__) . '/options/imageboxes-options.php';
 
 
-$base = require kirby()->root('kirby') . '/config/fields/checkboxes.php';
+$base = require __DIR__ . '/../../../../../kirby/config/fields/checkboxes.php';
 
 
 /* Merge new properties
