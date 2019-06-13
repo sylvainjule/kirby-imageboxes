@@ -13,7 +13,7 @@ export default {
         mobile: Boolean,
         ratio: Number,
     }
-}
+};
 </script>
 
 <style lang="scss">
