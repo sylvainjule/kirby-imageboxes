@@ -96,7 +96,7 @@ class ImageBoxesOptions extends Options {
             $image = $query['image'] ?? '{{ file.url }}';
             $query = $query['fetch'] ?? null;
         }
-        $optionsQuery = new ImageRadioOptionsQuery([
+        $optionsQuery = new ImageBoxesOptionsQuery([
             'aliases' => static::aliases(),
             'data'    => static::data($model),
             'query'   => $query,
