@@ -4,6 +4,7 @@ use Kirby\Form\Options;
 use Kirby\Cms\App;
 
 class ImageBoxesOptions extends Options {
+
 	public static function api($api, $model = null): array {
         $model = $model ?? App::instance()->site();
         $fetch = null;
@@ -62,15 +63,17 @@ class ImageBoxesOptions extends Options {
             return [];
         }
 
-        $assets = kirby()->url('assets') . '/images';
-        $result = [];
+        $baseUrl = option('sylvainjule.imageboxes.baseUrl') ?? kirby()->url('assets') . '/images';
+        $baseUrl = $model->toString($baseUrl);
+        $baseUrl = rtrim($baseUrl, '/');
+        $result  = [];
 
         foreach ($options as $key => $option) {
             if (is_array($option) === false || isset($option['value']) === false) {
                 $option = [
                     'value' => is_int($key) ? $option : $key,
                     'text'  => $option['text'],
-                    'image' => $assets . '/' . $option['image'],
+                    'image' => $baseUrl . '/' . $option['image'],
                 ];
             }
             elseif (is_array($option) === false || isset($option['value']) === true) {

@@ -14,8 +14,9 @@ Add illustrations to checkboxes.
 - [2. Setup](#2-setup)
   * [2.1. Hardcoded options](#21-hardcoded-options)
   * [2.2. Dynamic options](#22-dynamic-options)
-- [3. Options](#3-options)
-- [4. License](#4-license)
+- [3. Global options](#3-global-options)
+- [4. Per-field options](#4-per-field-options)
+- [5. License](#5-license)
 
 <br/>
 
@@ -84,9 +85,21 @@ I recommend using a `resize` number [already used](https://github.com/k-next/kir
 
 <br/>
 
-## 3. Options
+## 3. Global options
 
-#### 3.1. `ratio`
+#### 3.1. `baseUrl`
+
+If you want the images to be queried from a different location than the `assets/images` folder, you can set the `baseUrl` option in your `config.php` file to whatever folder you'd like. For example:
+
+```php
+    'sylvainjule.imageboxes.baseUrl' => '{{ kirby.url("assets") }}/my-custom-folder',
+```
+
+<br/>
+
+## 4. Per-field options
+
+#### 4.1. `ratio`
 
 ![ratio](https://user-images.githubusercontent.com/14079751/48333927-58bc1880-e659-11e8-8ef2-d239985877ae.jpg)
 
@@ -98,7 +111,7 @@ myimageboxes:
   ratio: 1/1
 ```
 
-#### 3.2. `fit`
+#### 4.2. `fit`
 
 ![fit](https://user-images.githubusercontent.com/14079751/48333925-58238200-e659-11e8-811c-074e43b43f2d.jpg)
 
@@ -110,7 +123,7 @@ myimageboxes:
   fit: cover
 ```
 
-#### 3.3. `mobile`
+#### 4.3. `mobile`
 
 By default, images are not displayed when the panel switches to its mobile view. Not recommended, but if you want to override this, set the option to `true`.
 
@@ -120,7 +133,7 @@ myimageboxes:
   mobile: false
 ```
 
-#### 3.4. `gap`
+#### 4.4. `gap`
 
 ![gap](https://user-images.githubusercontent.com/14079751/48333926-58bc1880-e659-11e8-8920-6ad913c63529.jpg)
 
@@ -134,6 +147,6 @@ myimageboxes:
 
 <br/>
 
-## 4. License
+## 5. License
 
 MIT
