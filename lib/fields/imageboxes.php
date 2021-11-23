@@ -1,5 +1,6 @@
 <?php
 
+require_once dirname(__DIR__) . '/options/imageboxes-optionsapi.php';
 require_once dirname(__DIR__) . '/options/imageboxes-optionsquery.php';
 require_once dirname(__DIR__) . '/options/imageboxes-options.php';
 

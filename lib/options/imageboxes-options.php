@@ -1,6 +1,7 @@
 <?php
 
 use Kirby\Form\Options;
+use Kirby\Cms\App;
 
 class ImageBoxesOptions extends Options {
 	public static function api($api, $model = null): array {
@@ -18,7 +19,8 @@ class ImageBoxesOptions extends Options {
         } else {
             $url = $api;
         }
-        $optionsApi = new OptionsApi([
+
+        $optionsApi = new ImageBoxesOptionsApi([
             'data'  => static::data($model),
             'fetch' => $fetch,
             'url'   => $url,
@@ -26,6 +28,7 @@ class ImageBoxesOptions extends Options {
             'value' => $value,
             'image' => $image
         ]);
+
         return $optionsApi->options();
     }
 
@@ -74,7 +77,7 @@ class ImageBoxesOptions extends Options {
                 $option = [
                     'value' => $option['value'],
                     'text'  => $option['text'],
-                    'image' => $option['image'],
+                    'image'  => $option['image'],
                 ];
             }
             // translate the option text
