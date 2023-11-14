@@ -123,7 +123,17 @@ myimageboxes:
   fit: cover
 ```
 
-#### 4.3. `mobile`
+#### 4.3. `back`
+
+Defines the background behind transparent / contained images. Accepts any CSS-valid property for the `background` property. Default is `false`.
+
+```yaml
+myimageboxes:
+  type: imageboxes
+  back: white # or '#fefefe', or 'rgb(255, 0, 255)', etc.
+```
+
+#### 4.4. `mobile`
 
 By default, images are not displayed when the panel switches to its mobile view. Not recommended, but if you want to override this, set the option to `true`.
 
@@ -133,7 +143,7 @@ myimageboxes:
   mobile: false
 ```
 
-#### 4.4. `gap`
+#### 4.5. `gap`
 
 ![gap](https://user-images.githubusercontent.com/14079751/48333926-58bc1880-e659-11e8-8920-6ad913c63529.jpg)
 

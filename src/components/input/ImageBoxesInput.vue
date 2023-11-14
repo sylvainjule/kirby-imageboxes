@@ -10,6 +10,7 @@
                 :ratio="ratio"
                 :mobile="mobile"
                 :padding="padding"
+                :back="back"
                 @input="onInput(option.value, $event)"
             />
         </li>
@@ -23,6 +24,7 @@ export default {
         fit: String,
         ratio: Number,
         mobile: Boolean,
+        back: [Boolean, String],
     },
     computed: {
         padding() {
