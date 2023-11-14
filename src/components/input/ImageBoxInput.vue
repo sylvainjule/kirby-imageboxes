@@ -7,7 +7,7 @@
             </figure>
         </figure>
         <div>
-            <input ref="input" :checked="value" :disabled="disabled" :id="id" class="k-checkbox-input-native" type="checkbox" @change="onChange($event.target.checked)">
+            <input ref="input" :checked="value" :disabled="disabled" :id="id" class="k-checkbox-input-native input-hidden" type="checkbox" @change="onChange($event.target.checked)">
             <span class="k-checkbox-input-icon" aria-hidden="true">
                 <svg width="12" height="10" viewBox="0 0 12 10" xmlns="http://www.w3.org/2000/svg" >
                     <path d="M1 5l3.3 3L11 1" stroke-width="2" fill="none" fill-rule="evenodd" />
