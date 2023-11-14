@@ -25,7 +25,9 @@
       	border-bottom: 1px solid $color-background;
     	min-width: 0;
     	overflow-wrap: break-word;
-
+    	input {
+    		display: none;
+    	}
     }
     .k-checkboxes-input label {
       	display: block;
@@ -72,12 +74,13 @@
 	  	}
 	  	> div {
 	  		position: relative;
+	  		display: flex;
 	  		line-height: $field-input-line-height;
       		padding: $field-input-padding $field-input-padding;
 	  	}
     }
     .k-checkbox-input-icon {
-      	top: ($field-input-height - $field-input-font-size) / 2;
+      	top: calc(($field-input-height - $field-input-font-size) / 2);
       	left: $field-input-padding;
       	margin-top: 0px;
     }
