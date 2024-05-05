@@ -22,7 +22,8 @@ Add illustrations to checkboxes.
 
 ## 1. Installation
 
-> Kirby 3: Up to 1.0.6. Kirby 4: 2.0.0+
+> If you are looking to use this field with Kirby 2, please switch to the kirby-2 branch. 
+Kirby 3: Up to 1.0.6. Kirby 4: 2.0.0+
 
 Download and copy this repository to ```/site/plugins/imageboxes```
 
