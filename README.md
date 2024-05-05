@@ -8,7 +8,7 @@ Add illustrations to checkboxes.
 
 ## Overview
 
-> This plugin is completely free and published under the MIT license. However, if you are using it in a commercial project and want to help me keep up with maintenance, please consider [making a donation of your choice](https://www.paypal.me/sylvainjl) or purchasing your license(s) through [my affiliate link](https://a.paddle.com/v2/click/1129/36369?link=1170).
+> This plugin is completely free and published under the MIT license. However, if you are using it in a commercial project and want to help me keep up with maintenance, please consider [making a donation of your choice](https://www.paypal.me/sylvainjl).
 
 - [1. Installation](#1-installation)
 - [2. Setup](#2-setup)
@@ -22,7 +22,7 @@ Add illustrations to checkboxes.
 
 ## 1. Installation
 
-> If you are looking to use this field with Kirby 2, please switch to the `kirby-2` branch.
+> Kirby 3: Up to 1.0.6. Kirby 4: 2.0.0+
 
 Download and copy this repository to ```/site/plugins/imageboxes```
 
@@ -141,18 +141,6 @@ By default, images are not displayed when the panel switches to its mobile view.
 myimageboxes:
   type: imageboxes
   mobile: false
-```
-
-#### 4.5. `gap`
-
-![gap](https://user-images.githubusercontent.com/14079751/48333926-58bc1880-e659-11e8-8920-6ad913c63529.jpg)
-
-Whether the field should add a `1rem` gap between each input, K2-like. Default is `false`.
-
-```yaml
-myimageboxes:
-  type: imageboxes
-  gap: false
 ```
 
 <br/>

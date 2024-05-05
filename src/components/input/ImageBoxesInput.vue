@@ -1,18 +1,9 @@
 <template>
-    <ul class="k-checkboxes-input" :style="'--columns:' + columns">
-        <li v-for="(option, index) in options" :key="index">
-            <k-imagebox-input
-                :id="id + '-' + index"
-                :value="selected.indexOf(option.value) > -1"
-                :label="option.text"
-                :image="option.image"
-                :fit="fit"
-                :ratio="ratio"
-                :mobile="mobile"
-                :padding="padding"
-                :back="back"
-                @input="onInput(option.value, $event)"
-            />
+    <ul :style="{ '--columns': columns }"
+        class="k-checkboxes-input k-imageboxes-input k-grid"
+        data-variant="choices">
+        <li v-for="(choice, index) in choices" :key="index">
+            <k-imagebox-input v-bind="choice" @input="input(choice.value, $event)" />
         </li>
     </ul>
 </template>
@@ -27,9 +18,28 @@ export default {
         back: [Boolean, String],
     },
     computed: {
-        padding() {
-            return 'padding-top:'+ this.$helper.ratio(this.ratio, 'auto', true)
+        choices() {
+            return this.options.map((option, index) => {
+                return {
+                    autofocus: this.autofocus && index === 0,
+                    checked: this.selected.includes(option.value),
+                    disabled: this.disabled || option.disabled,
+                    id: `${this.id}-${index}`,
+                    info: option.info,
+                    label: option.text,
+                    name: this.name ?? this.id,
+                    type: "checkbox",
+                    value: option.value,
+                    image: option.image,
+                    fit: this.fit,
+                    ratio: this.ratio,
+                    mobile: this.mobile,
+                    back: this.back
+                };
+            });
         }
+    },
+    methods: {
     }
 }
 </script>

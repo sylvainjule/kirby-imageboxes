@@ -1,43 +1,53 @@
 <template>
-    <label :class="['k-checkbox-input', {'is-focus': isFocused}]">
-        <figure :class="['k-checkbox-image-ctn', {'mobile-show': mobile}]">
-            <figure class="k-checkbox-image" :style="padding">
-                <img :src="image" :class="fit" alt="">
-                <div class="background" :style="background"></div>
-            </figure>
+    <label class="k-choice-input k-imagebox-input" :aria-disabled="disabled">
+        <figure class="k-imagebox-image" :data-mobile="mobile" :style="[{'padding-top': padding}, {'background': background}]">
+            <img :src="image" :class="fit">
         </figure>
-        <div>
-            <input ref="input" :checked="value" :disabled="disabled" :id="id" class="k-checkbox-input-native input-hidden" type="checkbox" @change="onChange($event.target.checked)">
-            <span class="k-checkbox-input-icon" aria-hidden="true">
-                <svg width="12" height="10" viewBox="0 0 12 10" xmlns="http://www.w3.org/2000/svg" >
-                    <path d="M1 5l3.3 3L11 1" stroke-width="2" fill="none" fill-rule="evenodd" />
-                </svg>
+
+        <div class="k-imagebox-wrapper">
+            <input
+                v-bind="{
+                    autofocus,
+                    id,
+                    checked,
+                    disabled,
+                    name,
+                    required,
+                    type,
+                    value
+                }"
+                :data-variant="variant"
+                :class="{ 'sr-only': variant === 'invisible' }"
+                @input="$emit('input', $event.target.checked)"
+            />
+            <span v-if="label || info" class="k-choice-input-label">
+                <!-- eslint-disable-next-line vue/no-v-html -->
+                <span class="k-choice-input-label-text" v-html="label" />
+                <!-- eslint-disable-next-line vue/no-v-html -->
+                <span v-if="info" class="k-choice-input-label-info" v-html="info" />
             </span>
-            <span class="k-checkbox-input-label" v-html="label" />
         </div>
     </label>
 </template>
 
+
 <script>
 export default {
-    extends: 'k-checkbox-input',
-    data() {
-        return {
-            isFocused: false
-        }
-    },
+    extends: 'k-choice-input',
     props: {
+        image: String,
         fit: String,
         ratio: Number,
         mobile: Boolean,
-        padding: String,
-        image: String,
-        back: [Boolean, String]
+        back: [Boolean, String],
     },
     computed: {
-        background() {
-            return this.back ? 'background:'+ this.back +';' : false
+        padding() {
+            return this.$helper.ratio(this.ratio, 'auto', true)
         },
-    }
+        background() {
+            return this.back || false
+        },
+    },
 }
 </script>

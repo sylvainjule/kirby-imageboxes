@@ -1,110 +1,47 @@
-@import '_variables.scss';
-
-.k-input[data-theme="field"][data-type="imageboxes"] {
-    .k-input-before {
-        border-right: 1px solid $color-background;
-    }
-    .k-input-element + .k-input-after,
-    .k-input-element + .k-input-icon {
-      	border-left : 1px solid $color-background;
-    }
-    .k-input-element {
-     	overflow: hidden;
-    }
-    .k-checkboxes-input {
-      	display: grid;
-      	grid-template-columns: 1fr;
-      	margin-bottom: -1px;
-      	margin-right: -1px;
-      	@media screen and (min-width: $breakpoint-medium) {
-        	grid-template-columns: repeat(var(--columns), 1fr);
-      	}
-    }
-    .k-checkboxes-input li {
-      	border-right: 1px solid $color-background;
-      	border-bottom: 1px solid $color-background;
-    	min-width: 0;
-    	overflow-wrap: break-word;
-    }
-    .k-checkboxes-input label {
-      	display: block;
-      	padding: 0;
-      	.k-checkbox-image-ctn {
-	  		width: 100%;
-	  		display: none;
-	  		@media screen and (min-width: $breakpoint-medium) {
-	  		  	display: block;
-	  		}
-	  		&.mobile-show {
-				display: block;
-	  		}
-	  		.k-checkbox-image {
-	  			position: relative;
-	  			width: 100%;
-		    	img {
-		    		display: block;
-		    		position: absolute;
-				    top: 0;
-				    right: 0;
-				    bottom: 0;
-				    left: 0;
-				    width: 100%;
-				    height: 100%;
-		    		z-index: 1;
-		    		&.contain {
-		    			object-fit: contain;
-		    		}
-		    		&.cover {
-		    			object-fit: cover;
-		    		}
-		    	}
-	  			.background {
-	  				background: lighten($color-dark, 10%) url($pattern);
-	  				position: absolute;
-	  				top: 0;
-	  				left: 0;
-	  				width: 100%;
-	  				height: 100%;
-	  				z-index: 0;
-	  			}
-	  		}
-	  	}
-	  	> div {
-	  		position: relative;
-	  		display: flex;
-	  		line-height: $field-input-line-height;
-      		padding: $field-input-padding $field-input-padding;
-	  	}
-    }
-    .k-checkbox-input-icon {
-      	top: calc(($field-input-height - $field-input-font-size) / 2);
-      	left: $field-input-padding;
-      	margin-top: 0px;
-    }
+.k-imagebox-input {
+	flex-wrap: wrap;
+	padding-top: 0;
+	padding-left: 0;
+	padding-right: 0;
+	row-gap: var(--spacing-2);
+	input {
+		margin-left: var(--spacing-3);
+	}
+	.k-choice-input-label {
+		padding-right: var(--spacing-3);
+	}
 }
+.k-imagebox-wrapper {
+	display: flex;
+	gap: var(--spacing-3);
+}
+.k-imagebox-image {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	background: var(--pattern);
+	border-top-left-radius: var(--input-rounded);
+	border-top-right-radius: var(--input-rounded);
 
-.k-imageboxes-field {
-	&.has-gap {
-		.k-input {
-			background: none;
-			border: none;
-			&:focus-within {
-			    border: none;
-			    box-shadow: none;
-			}
-			.k-checkboxes-input {
-				grid-gap: 1rem;
-				li {
-					padding-left: 0;
-				}
-				label {
-					border: 1px solid $color-border;
-					background: white;
-				}
-				.k-checkbox-input.is-focus {
-					border: 1px solid $color-focus-border;
-				}
-			}
+	img {
+		display: block;
+		position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100%;
+		z-index: 1;
+		&.contain {
+			object-fit: contain;
 		}
+		&.cover {
+			object-fit: cover;
+		}
+	}
+
+	@media screen and (max-width: 60rem) {
+	  	&:not([data-mobile]) {
+	  		display: none;
+	  	}
 	}
 }

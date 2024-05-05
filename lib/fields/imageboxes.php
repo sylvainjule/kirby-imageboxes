@@ -1,9 +1,13 @@
 <?php
 
+namespace SylvainJule;
+
 require_once dirname(__DIR__) . '/options/imageboxes-optionsapi.php';
 require_once dirname(__DIR__) . '/options/imageboxes-optionsquery.php';
+require_once dirname(__DIR__) . '/options/imageboxes-factory.php';
+require_once dirname(__DIR__) . '/options/imageboxes-option.php';
 require_once dirname(__DIR__) . '/options/imageboxes-options.php';
-
+require_once dirname(__DIR__) . '/options/imageboxes.php';
 
 $base = require kirby()->root('kirby') . '/config/fields/checkboxes.php';
 
@@ -22,9 +26,6 @@ $base = array_merge_recursive($base, array(
         'back' => function($back = false) {
             return $back;
         },
-        'gap' => function($gap = false) {
-            return $gap;
-        },
         'mobile' => function($mobile = false) {
             return $mobile;
         },
@@ -39,9 +40,12 @@ $base = array_merge_recursive($base, array(
 --------------------------------*/
 
 $base = array_replace_recursive($base, array(
-    'computed' => array(
-    	'options' => function() {
-    		return ImageBoxesOptions::factory($this->options(), $this->props, $this->model());
+    'methods' => array(
+    	'getOptions' => function() {
+            $props   = \Kirby\Field\FieldOptions::polyfill($this->props);
+            $options = ImageBoxes::factory($props['options']);
+
+            return $options->render($this->model());
         },
     ),
 ));

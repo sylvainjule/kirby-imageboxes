@@ -1,7 +1,12 @@
 <template>
-    <k-field :counter="counterOptions" v-bind="$props" :class="['k-checkboxes-field', 'k-imageboxes-field', {'has-gap': gap == true}]">
-        <k-input ref="input" :id="_uid" v-bind="$props" theme="field" v-on="$listeners" />
-  </k-field>
+    <k-field class="k-checkboxes-field k-imageboxes-field"
+             v-bind="$props" :input="id + '-0'" :counter="counterOptions">
+
+        <k-empty v-if="!options?.length" :text="$t('options.none')" icon="checklist" />
+        <k-imageboxes-input v-else ref="input" v-bind="$props" v-on="$listeners" />
+
+    </k-field>
+</template>
 </template>
 
 <script>
@@ -9,7 +14,6 @@ export default {
     extends: 'k-checkboxes-field',
     props: {
         fit: String,
-        gap: Boolean,
         mobile: Boolean,
         ratio: Number,
         back: [Boolean, String]
