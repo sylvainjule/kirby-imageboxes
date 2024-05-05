@@ -7,7 +7,6 @@
 
     </k-field>
 </template>
-</template>
 
 <script>
 export default {
