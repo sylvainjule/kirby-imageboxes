@@ -8,6 +8,7 @@ class ImageBoxesOptions extends \Kirby\Option\Options {
 
         // We format the correct image url here ↓
         $baseUrl = option('sylvainjule.imageboxes.baseUrl') ?? kirby()->url('assets') . '/images';
+        $baseUrl = kirby()->site()->toSafeString($baseUrl);
         $baseUrl = rtrim($baseUrl, '/');
 
         foreach($items as $key => $option) {
