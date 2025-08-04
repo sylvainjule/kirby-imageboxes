@@ -8,7 +8,7 @@ Add illustrations to checkboxes.
 
 ## Overview
 
-> This plugin is completely free and published under the MIT license. However, if you are using it in a commercial project and want to help me keep up with maintenance, please consider [making a donation of your choice](https://www.paypal.me/sylvainjl).
+> This plugin is completely free and published under the MIT license. However, if you are using it in a commercial project and want to help me keep up with maintenance, you can consider [making a donation of your choice](https://www.paypal.me/sylvainjl).
 
 - [1. Installation](#1-installation)
 - [2. Setup](#2-setup)
@@ -22,7 +22,7 @@ Add illustrations to checkboxes.
 
 ## 1. Installation
 
-> Kirby 3: Up to 1.0.6. Kirby 4: 2.0.0+
+> Kirby 3: Up to 1.0.5. Kirby 4: 2.0.0+. Kirby 5: 2.1.0+
 
 Download and copy this repository to ```/site/plugins/imageboxes```
 
