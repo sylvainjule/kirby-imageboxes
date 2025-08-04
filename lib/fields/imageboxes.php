@@ -4,7 +4,6 @@ namespace SylvainJule;
 
 require_once dirname(__DIR__) . '/options/imageboxes-optionsapi.php';
 require_once dirname(__DIR__) . '/options/imageboxes-optionsquery.php';
-require_once dirname(__DIR__) . '/options/imageboxes-factory.php';
 require_once dirname(__DIR__) . '/options/imageboxes-option.php';
 require_once dirname(__DIR__) . '/options/imageboxes-options.php';
 require_once dirname(__DIR__) . '/options/imageboxes.php';
