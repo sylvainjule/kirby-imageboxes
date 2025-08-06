@@ -2,7 +2,7 @@
 
 Add illustrations to checkboxes.
 
-![cover](https://user-images.githubusercontent.com/14079751/48333924-58238200-e659-11e8-938d-311f7bec31a6.jpg)
+![cover](https://github.com/user-attachments/assets/d9f57eb7-4cd1-454f-9e7d-f427ab4a62b5)
 
 <br/>
 
