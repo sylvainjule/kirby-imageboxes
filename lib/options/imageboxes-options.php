@@ -3,7 +3,7 @@
 namespace SylvainJule;
 
 class ImageBoxesOptions extends \Kirby\Option\Options {
-    public static function factory(array $items = []): static {
+    public static function factory(array $items = [], bool $resolve = true): static {
         $collection = new static();
 
         // We format the correct image url here ↓
@@ -27,7 +27,7 @@ class ImageBoxesOptions extends \Kirby\Option\Options {
                     $option['value'] = $option;
                 }
             }
-            $option = ImageBoxesOption::factory($option);
+            $option = ImageBoxesOption::factory($option, $resolve);
             $collection->__set($option->id(), $option);
         }
 
