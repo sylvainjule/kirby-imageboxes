@@ -76,7 +76,7 @@ class ImageBoxesOptionsApi extends \Kirby\Option\OptionsApi {
                 $item = new Field(null, $key, $item);
             }
 
-            $safeMethod = $safeMode === true ? 'toSafeString' : 'toString';
+            $safeMethod = $safeMode === true ? 'toSafeHtmlString' : 'toString';
 
             $options[] = [
                 // value is always a raw string
@@ -84,11 +84,11 @@ class ImageBoxesOptionsApi extends \Kirby\Option\OptionsApi {
                 // text is only a raw string when using {< >}
                 // or when the safe mode is explicitly disabled (select field)
                 'text' => $model->$safeMethod($this->text, ['item' => $item]),
-                'image' => $model->$safeMethod($this->image, ['item' => $item]),
+                'image' => $model->toSafeString($this->image, ['item' => $item]),
             ];
         }
 
         // create Options object and render this subsequently
-        return $this->options = ImageBoxesOptions::factory($options);
+        return $this->options = ImageBoxesOptions::factory($options, resolve: false);
     }
 }
