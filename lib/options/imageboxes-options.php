@@ -12,7 +12,12 @@ class ImageBoxesOptions extends \Kirby\Option\Options {
         $baseUrl = rtrim($baseUrl, '/');
 
         foreach($items as $key => $option) {
-            $image = $items[$key]['image'];
+            $image = $option['image'] ?? null;
+
+            if($image === null || $image === '') {
+                continue;
+            }
+
             if(!str_starts_with($image, 'http')) {
                 $items[$key]['image'] = $baseUrl .'/'. $items[$key]['image'];
             }
