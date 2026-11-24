@@ -127,7 +127,7 @@ class ImageBoxesOptionsQuery extends \Kirby\Option\OptionsQuery {
             // or when the safe mode is explicitly disabled (select field)
             $safeMethod = $safeMode === true ? 'toSafeHtmlString' : 'toString';
             $text = $model->$safeMethod($this->text ?? $text, $data);
-            $image = $model->toSafeString($this->image ?? $image, $data);
+            $image = $this->image !== null ? $model->toSafeString($this->image, $data) : null;
 
             return compact('text', 'value', 'image');
         });

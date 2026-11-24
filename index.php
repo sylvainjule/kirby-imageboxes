@@ -3,7 +3,7 @@
 use SylvainJule\ImageBoxesField;
 
 load([
-    'SylvainJule\\ImageBoxesField'        => 'lib/fields/ImageBoxesField.php',
+    'SylvainJule\\ImageBoxesField'        => 'lib/fields/ImageboxesField.php',
     'SylvainJule\\ImageBoxes'             => 'lib/options/imageboxes.php',
     'SylvainJule\\ImageBoxesOption'       => 'lib/options/imageboxes-option.php',
     'SylvainJule\\ImageBoxesOptions'      => 'lib/options/imageboxes-options.php',
